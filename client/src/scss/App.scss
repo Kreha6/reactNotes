@@ -1,0 +1,36 @@
+.banner {
+  background: #f5756c;
+  background: linear-gradient(#f5756c, #fd5480), #f5756c;
+  box-sizing: border-box;
+  height: 100%;
+  left: 0;
+  padding: 5em 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  h1 {
+    color: #fff;
+    font-family: "Dancing Script";
+    font-size: 4.375rem;
+    margin-bottom: 1em;
+  }
+  h2 {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.5;
+    margin: 0 auto;
+    width: 50%;
+  }
+}
+
+.container:before, header:before, .menu-toggle:before, .container:after, header:after, .menu-toggle:after {
+  content: "";
+  display: table;
+}
+
+.container:after, header:after, .menu-toggle:after {
+  clear: both;
+}
