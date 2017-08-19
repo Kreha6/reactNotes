@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import * as UserActions from '../actions/UserActions';
+import {UsersList} from './UsersList.js';
 
 class Test extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class Test extends Component {
       login: "",
       password: ""
     }
+
 
   }
 
@@ -26,7 +28,6 @@ class Test extends Component {
     e.preventDefault()
     let user = {login:this.state.login, password:this.state.password,userId:Math.floor(Math.random()*(100000))};
     this.props.userActions.addUser(user);
-    //console.log(this.props);
   }
 
   render() {
@@ -37,12 +38,18 @@ class Test extends Component {
           <input type="text" onChange={this.handlePasswordInputChange} value={this.state.password} placeholder="pass"/>
           <button onClick={this.handleSubmit}>send</button>
         </form>
+        <UsersList users = {this.props.users} />
+
       </div>
 
     )
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.userActions.getUsers();
+    console.log("loguje propsy");
+    console.log(this.props);
+  }
 }
 
 function mapStateToProps(state) {
