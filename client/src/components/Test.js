@@ -30,7 +30,8 @@ class Test extends Component {
     this.props.userActions.addUser(user);
   }
 
-  request() {
+  request = (e) => {
+    e.preventDefault()
     this.props.userActions.getUsers();
 
   }

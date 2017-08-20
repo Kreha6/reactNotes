@@ -4,6 +4,7 @@ import {Header} from './Header.js';
 import {Home} from './Home.js';
 import {Notes} from './Notes.js';
 import {Links} from './Links.js';
+//import {AddItem} from './AddItem.js';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import '../scss/App.scss';
 
@@ -29,6 +30,7 @@ class App extends Component {
               <Switch>
                 <Route path="/notes" component = {Notes} />
                 <Route path="/links" component = {Links} />
+                {/* <Route path='/add-item' component={AddItem} /> */}
                 <Route exact path="/" component = {Home} />
               </Switch>
             </div>
