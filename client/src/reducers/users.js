@@ -12,12 +12,12 @@ export function users(state = initialState, action) {
       }
     case 'REQUEST_USERS':
       {
-
+        console.log(action)
         return {
           ...state,
-          users: [
+          users:
             action.users
-          ]
+          
         }
         break;
       }
