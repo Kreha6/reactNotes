@@ -37,20 +37,14 @@ userRouter.route('/edit/:id').get(function (req, res) {
 
 //  Defined update route
 userRouter.route('/update/:id').post(function (req, res) {
-  User.findById(req.params.id, function(err, user) {
-    if (!user)
-      return next(new Error('Could not load Document'));
-    else {
-      // do your updates here
+  //console.log(req.body);
+  User.findOneAndUpdate({"_id": req.params.id}, req.body, {new: true}, function(err, user) {
+  if (err) {
+    console.log('got an error');
+  }
 
-      user.save().then(user => {
-          res.json('Update complete');
-      })
-      .catch(err => {
-            res.status(400).send("unable to update the database");
-      });
-    }
-  });
+  // at this point person is null.
+});
 });
 
 // Defined delete | remove | destroy route
