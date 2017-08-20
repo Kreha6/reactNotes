@@ -30,6 +30,11 @@ class Test extends Component {
     this.props.userActions.addUser(user);
   }
 
+  request() {
+    this.props.userActions.getUsers();
+
+  }
+
   render() {
     return (
       <div className="test">
@@ -37,6 +42,7 @@ class Test extends Component {
           <input type="text" onChange={this.handleLoginInputChange} value={this.state.login} placeholder="login"/>
           <input type="text" onChange={this.handlePasswordInputChange} value={this.state.password} placeholder="pass"/>
           <button onClick={this.handleSubmit}>send</button>
+          <button onClick={this.request}>request</button>
         </form>
         <UsersList users = {this.props.users} />
 
@@ -47,13 +53,13 @@ class Test extends Component {
 
   componentDidMount() {
     this.props.userActions.getUsers();
-    console.log("loguje propsy");
-    console.log(this.props);
+
   }
 }
 
 function mapStateToProps(state) {
-  return { users: state.users }
+  console.log(state)
+  return { users: state.users.users }
 }
 
 function mapDispatchToProps(dispatch) {

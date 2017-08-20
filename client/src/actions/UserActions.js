@@ -2,13 +2,6 @@ import { USER_ADD, REQUEST_USERS, UPDATE_USER, DELETE_USER } from '../constants/
 import axios from 'axios';
 
 export function addUser(user) {
-  // axios.post('http://localhost:4200/users/add/user', {user:user}).then(() => {
-  //   return {
-  //     type: USER_ADD,
-  //     user: user
-  //   }
-  // }).catch(err => console.log(err));
-
   return function (dispatch) {
     axios.post('http://localhost:4200/users/add/user', {user:user})
       .then(() => dispatch({
@@ -18,36 +11,37 @@ export function addUser(user) {
   }
 }
 
-
-
-
 export function getUsers() {
-  axios.get('http://localhost:4200/users').then(response => {
-    return {
+  return function (dispatch) {
+    axios.get('http://localhost:4200/users')
+    .then((response) => dispatch({
       type: REQUEST_USERS,
-      users:response
-    }
-  }).catch(err => console.log(err));
-
+      users:response.data
+    })).catch(err => console.log(err));
+  }
 }
 
-export function updateUser(user) {
-  axios.post('http://localhost:4200/users/update/' + user._id, {user:user}).then(() => {
-    return {
+export function updateUser(user,_id) {
+
+  return function (dispatch) {
+    axios.post('http://localhost:4200/users/update/' + _id, {user:user})
+    .then(() => dispatch({
       type: UPDATE_USER,
       user: user,
-      id:user._id
-    }
-  }).catch(err => console.log(err));
+      id:_id
+      })).catch(err => console.log(err));
+  }
 
 }
 
 export function deleteUser(id) {
-  axios.get('http://localhost:4200/users/delete/' + id).then(() => {
-    return {
+
+  return function (dispatch) {
+    axios.get('http://localhost:4200/users/delete/' + id)
+    .then(() => dispatch({
       type: DELETE_USER,
       id:id
-    }
-  }).catch(err => console.log(err));
+      })).catch(err => console.log(err));
+  }
 
 }

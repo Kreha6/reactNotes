@@ -8,6 +8,7 @@ class UserListItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
+
     }
   }
 
@@ -18,15 +19,15 @@ class UserListItem extends Component {
 
   handleUpdate = (e) => {
     e.preventDefault()
-    let user = {login:"updated login", password:"updatedpassword",userId:this.props.user.userId};
-    this.props.userActions.updateUser(user);
+    let user = {login:"updated login", password:"updatedpassword",userId:this.props.user.user.userId};
+    this.props.userActions.updateUser(user,this.props.user._id);
   }
 
   render() {
     return (
       <li className="">
         <p>---------------------------------</p>
-        <p>Name: {this.props.user.login}</p>
+        <p>Name: {this.props.user.user.login}</p>
         <button onClick={this.handleDelete}>delete</button>
         <button onClick={this.handleUpdate}>update</button>
       </li>

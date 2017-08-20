@@ -4,7 +4,8 @@ import UserListItem from './UserListItem.js';
 export const UsersList = (props) => {
   let users = null;
   if(props.users.length>0){
-    users = props.users.map(user => {
+    users = props.users[0].map(user => {
+
       return <UserListItem key={user._id} user={user}/>
     })
   }
