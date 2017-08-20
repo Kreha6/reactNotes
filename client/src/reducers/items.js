@@ -1,63 +1,30 @@
-import axios from 'axios';
-
 const initialState = {
   items: []
 };
 
 export function items(state = initialState, action) {
   switch (action.type) {
-
     case 'ITEM_ADD':
       {
-        axios.post('http://localhost:4200/items/add/post', {item: action.item}).then(() => {
-          return {
-            ...state,
-            items: [
-              ...state.items,
-              action.item
-            ]
-          }
-        }).catch(err => console.log(err));
-        break;
+        return state
       }
-
     case 'REQUEST_ITEMS':
       {
-        axios.get('http://localhost:4200/items').then(response => {
-          return Object.assign({}, state, {items: response})
-        }).catch(err => console.log(err));
-        break;
+        return {
+          ...state,
+          items:
+            action.items
+
+        }
       }
-      //tu podawaj jeszcze index tego elementu starego
     case 'UPDATE_ITEM':
       {
-        axios.post('http://localhost:4200/items/update/' + action.id, {user: action.item}).then(() => {
-          return {
-            ...state,
-            items: [
-              ...state.items.slice(0, action.index),
-              action.item,
-              ...state.items.slice(action.index + 1)
-            ]
-          }
-        }).catch(err => console.log(err));
-        break;
+        return state;
       }
-      //same here
     case 'DELETE_ITEM':
       {
-        axios.get('http://localhost:4200/items/delete/' + action.id).then(() => {
-          return {
-            ...state,
-            items: [
-              ...state.items.slice(0, action.index),
-              ...state.items.slice(action.index + 1)
-            ]
-          }
-        }).catch(err => console.log(err));
-        break;
+        return state
       }
-
     default:
       return state;
   }

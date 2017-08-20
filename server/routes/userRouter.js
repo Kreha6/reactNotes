@@ -37,7 +37,6 @@ userRouter.route('/edit/:id').get(function (req, res) {
 
 //  Defined update route
 userRouter.route('/update/:id').post(function (req, res) {
-  //console.log(req.body);
   User.findOneAndUpdate({"_id": req.params.id}, req.body, {new: true}, function(err, user) {
   if (err) {
     console.log('got an error');

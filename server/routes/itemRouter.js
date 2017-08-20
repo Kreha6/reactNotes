@@ -25,7 +25,7 @@ itemRouter.route('/').get(function (req, res) {
     }
   });
 });
-
+//probably won't need that
 itemRouter.route('/edit/:id').get(function (req, res) {
   var id = req.params.id;
   Item.findById(id, function (err, item){

@@ -1,55 +1,44 @@
 const initialState = {
-  users: []
+  users: [],
+  signedUser:{}
 };
 
 export function users(state = initialState, action) {
   switch (action.type) {
     case 'USER_ADD':
-    console.log(state.users)
       {
         return state
-        break;
       }
     case 'REQUEST_USERS':
       {
-        console.log(action)
         return {
           ...state,
           users:
             action.users
-          
         }
-        break;
       }
     case 'UPDATE_USER':
       {
-
-        // var index = state.users[0].map((x) => {
-        //   return x._id;
-        // }).indexOf(action._id);
-        //
-        // var index = state.users[0].findIndex(x => x._id==action._id);
-
-        return state
-        // return {
-        //   ...state,
-        //   users: [
-        //     ...state.users.slice(0, index),
-        //     action.user,
-        //     ...state.users.slice(index + 1)
-        //   ]
-        // }
-        break;
+        return state;
       }
     case 'DELETE_USER':
       {
-        var index = state.users.map((x) => {
-          return x._id;
-        }).indexOf(action.id);
-
         return state
-        break;
       }
+    case 'SIGN_USER_IN':
+    {
+      return{
+        ...state,
+        signedUser:action.user
+      }
+    }
+    case 'SIGN_USER_OUT':
+    {
+      return{
+        ...state,
+        signedUser:{}
+      }
+    }
     default:
       return state;
   }

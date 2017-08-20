@@ -7,7 +7,7 @@ var Item = new Schema({
     type: String,
     description: String,
     link: String,
-    userId: Number
+    userId: String
   },
 },{
     collection: 'items'

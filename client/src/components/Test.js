@@ -26,7 +26,7 @@ class Test extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    let user = {login:this.state.login, password:this.state.password,userId:Math.floor(Math.random()*(100000))};
+    let user = {login:this.state.login, password:this.state.password};
     this.props.userActions.addUser(user);
   }
 
@@ -59,7 +59,6 @@ class Test extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state)
   return { users: state.users.users }
 }
 
