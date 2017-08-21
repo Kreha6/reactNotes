@@ -1,7 +1,7 @@
 import React,{ Component } from 'react';
 import {Navigation} from './Navigation.js';
 import {Header} from './Header.js';
-import {Home} from './Home.js';
+import {Home} from './Home/Home.js';
 import {Notes} from './Notes.js';
 import {Links} from './Links.js';
 //import {AddItem} from './AddItem.js';
